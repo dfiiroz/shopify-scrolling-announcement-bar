@@ -1,0 +1,133 @@
+<style>
+.mypcls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 5rem;
+    padding: 10px;
+    background: linear-gradient(to right, #3f51b5, #f44336);
+    color: white;
+    font-weight: bold;
+}
+ 
+  
+    .mycls.active {
+        display: flex;
+        /* flex-basis: auto; */
+        transform: translateX(100%);
+        animation: scroll-left 10s linear infinite;
+        width: 100vw;
+    }
+  
+      .mycls1.active {
+        display: flex;
+        /* flex-basis: auto; */
+        transform: translateX(100%);
+        animation: scroll-left 10s linear infinite;
+        width: 100vw;
+    }
+  
+      .mycls2.active {
+        display: flex;
+        /* flex-basis: auto; */
+        transform: translateX(100%);
+        animation: scroll-left 10s linear infinite;
+        width: 100vw;
+    }
+  
+    @keyframes scroll-left {
+    0% {
+      -moz-transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      transform: translateX(100%);
+    }
+    100% {
+      -moz-transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+    }
+  }
+  
+</style>
+
+
+<div class="mypcls">
+  
+  {% if section.settings.my_text != blank %}
+  <div class="mycls active">{{ section.settings.my_text }} </div>
+  {% endif %}
+  
+    {% if section.settings.my_text2 != blank %}
+  <div class="mycls1 active">{{ section.settings.my_text2 }} </div>
+  {% endif %}
+  
+    {% if section.settings.my_text3 != blank %}
+  <div class="mycls2 active">{{ section.settings.my_text3 }} </div>
+  {% endif %}
+   
+
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Custom Announcement Bar",
+    "settings": [
+      {
+      "type": "text",
+      "id": "my_text",
+      "label": "Type Announcement bar text",
+      "default": "Hello World"
+      },
+      {
+      "type": "text",
+      "id": "my_text2",
+      "label": "Type Announcement bar text",
+      "default": "Hello World2"
+      },
+      {
+      "type": "text",
+      "id": "my_text3",
+      "label": "Type Announcement bar text",
+      "default": "Hello World3"
+      }
+	]
+  }
+{% endschema %}
+
+<script>
+  const mypcls = document.querySelector(".mypcls");
+  
+      mypcls.addEventListener("mouseenter", function(){
+    	  document.querySelector(".mycls").classList.remove("active");
+          document.querySelector(".mycls1").classList.remove("active");
+          document.querySelector(".mycls2").classList.remove("active");      
+    });
+  
+  
+      mypcls.addEventListener("mouseleave", function(){
+          document.querySelector(".mycls").classList.add("active");
+          document.querySelector(".mycls1").classList.add("active");
+          document.querySelector(".mycls2").classList.add("active");
+    });
+   
+   
+  
+//     mypcls.addEventListener("mouseenter", function(){
+//     	  document.querySelector(".mycls").classList.remove("active");
+//           document.querySelector(".mycls1").classList.remove("active");
+//           document.querySelector(".mycls2").classList.remove("active");
+      
+//         // reset after a short delay
+//       setTimeout(function() {
+//           document.querySelector(".mycls").classList.add("active");
+//           document.querySelector(".mycls1").classList.add("active");
+//           document.querySelector(".mycls2").classList.add("active");
+//       }, 5000);
+      
+//     });
+   
+  
+</script>
